@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using Mancala.Entities;
 
@@ -15,6 +9,13 @@ namespace Mancala.Forms
         public Form1()
         {
             InitializeComponent();
+            referree.Board.PropertyChanged += updateTitleBar;
+            Text = referree.Board.Turn.ToString();
+        }
+
+        private void updateTitleBar(object sender, EventArgs e)
+        {
+            Text = referree.Board.Turn.ToString();
         }
     }
 }

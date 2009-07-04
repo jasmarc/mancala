@@ -11,7 +11,7 @@ namespace Mancala.Entities
         {
             Player? winner = null;
             if (Board.Cups
-                    .Where(x => !x.IsGoal
+                    .Where(x => !(x is GoalCup)
                                 && x.Owner == Player.Player1)
                     .Select(x => x.Seeds)
                     .Sum() == 0)
@@ -19,7 +19,7 @@ namespace Mancala.Entities
                 winner = Player.Player1;
             }
             else if (Board.Cups
-                         .Where(x => !x.IsGoal
+                         .Where(x => !(x is GoalCup)
                                      && x.Owner == Player.Player2)
                          .Select(x => x.Seeds)
                          .Sum() == 0)
@@ -46,13 +46,19 @@ namespace Mancala.Entities
                      nextNode = nextNode.Next ?? Board.Cups.First)
                 {
                     nextCup = nextNode.Value;
-                    if (nextCup.Owner == Board.Turn || !nextCup.IsGoal)
+                    if (nextCup.Owner == Board.Turn || !(nextCup is GoalCup))
                     {
                         cup.Seeds--;
                         nextCup.Seeds++;
                     }
                 }
-                if (nextCup.Owner != Board.Turn || (!nextCup.IsGoal && nextCup.Seeds != 2))
+                Player? winner = Winner();
+                if(winner != null)
+                {
+                    MessageBox.Show(winner + " won!\r\n");
+                    Board.Reset();
+                }
+                else if (nextCup.Owner != Board.Turn || (!(nextCup is GoalCup) && nextCup.Seeds != 2))
                 {
                     Board.Turn = Board.Turn == Player.Player1
                                      ? Player.Player2
