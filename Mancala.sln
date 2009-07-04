@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mancala", "Mancala\Mancala.csproj", "{5D4E7F24-9A59-443B-9235-91DE378ADE55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mancala.Test", "Mancala.Test\Mancala.Test.csproj", "{9E10BDF4-F434-4AB1-972C-2BA01F14615D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{5D4E7F24-9A59-443B-9235-91DE378ADE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D4E7F24-9A59-443B-9235-91DE378ADE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D4E7F24-9A59-443B-9235-91DE378ADE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E10BDF4-F434-4AB1-972C-2BA01F14615D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E10BDF4-F434-4AB1-972C-2BA01F14615D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E10BDF4-F434-4AB1-972C-2BA01F14615D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E10BDF4-F434-4AB1-972C-2BA01F14615D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
