@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,36 +11,24 @@ namespace Mancala.Entities
 
         public Board()
         {
-            Players = new List<Player>
-                          {
-                              Player.Player1,
-                              Player.Player2
-                          };
-            Turn = Players[0];
+            Turn = Player.Player1;
             Cups = new LinkedList<ICup>(new List<ICup>
                                             {
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[0], Seeds = 4},
-                                                new Cup {IsGoal = true, Owner = Players[0], Seeds = 0},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = false, Owner = Players[1], Seeds = 4},
-                                                new Cup {IsGoal = true, Owner = Players[1], Seeds = 0}
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player1,  Seeds = 4},
+                                                new Cup {IsGoal = true, Owner  = Player.Player1, Seeds = 0},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = false, Owner = Player.Player2,  Seeds = 4},
+                                                new Cup {IsGoal = true, Owner  = Player.Player2, Seeds = 0}
                                             });
-        }
-
-        public bool GameIsOver()
-        {
-            int numSeedsPlayer1 = Cups.Where(x => !x.IsGoal && x.Owner == Players[0]).Select(x => x.Seeds).Sum();
-            int numSeedsPlayer2 = Cups.Where(x => !x.IsGoal && x.Owner == Players[1]).Select(x => x.Seeds).Sum();
-            return ((numSeedsPlayer1 == 0) || (numSeedsPlayer2 == 0));
         }
 
         public override string ToString()

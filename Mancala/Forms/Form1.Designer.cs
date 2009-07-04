@@ -169,6 +169,7 @@ namespace Mancala.Forms
             this.button8.TabIndex = 0;
             this.button8.Text = "button1";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(referree.ReceivedMove);
             // 
             // button9
             // 
@@ -181,6 +182,7 @@ namespace Mancala.Forms
             this.button9.TabIndex = 0;
             this.button9.Text = "button1";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(referree.ReceivedMove);
             // 
             // button10
             // 
@@ -193,6 +195,7 @@ namespace Mancala.Forms
             this.button10.TabIndex = 0;
             this.button10.Text = "button1";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(referree.ReceivedMove);
             // 
             // button11
             // 
@@ -205,6 +208,7 @@ namespace Mancala.Forms
             this.button11.TabIndex = 0;
             this.button11.Text = "button1";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(referree.ReceivedMove);
             // 
             // button12
             // 
@@ -217,6 +221,7 @@ namespace Mancala.Forms
             this.button12.TabIndex = 0;
             this.button12.Text = "button1";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(referree.ReceivedMove);
             // 
             // panel1
             // 

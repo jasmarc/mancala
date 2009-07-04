@@ -4,14 +4,9 @@ namespace Mancala.Entities
 {
     public interface IReferree
     {
-        // Methods
-        void ApplyMove(ICup cup);
-        void DeclareWinner();
-        bool GameIsOver();
+        IBoard Board { get; set; }
+        Player? Winner();
         bool MoveIsLegal(ICup cup);
         void ReceivedMove(object sender, EventArgs e);
-
-        // Properties
-        IBoard Board { get; set; }
     }
 }
