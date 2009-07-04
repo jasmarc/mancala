@@ -8,9 +8,9 @@ namespace Mancala.Entities
     {
         public void ApplyMove(ICup cup)
         {
-            for (LinkedListNode<ICup> nextNode = this.Board.Cups.Find(cup).Next ?? Board.Cups.First; 
-                cup.Seeds > 0; 
-                nextNode = nextNode.Next ?? Board.Cups.First)
+            for (LinkedListNode<ICup> nextNode = Board.Cups.Find(cup).Next ?? Board.Cups.First;
+                 cup.Seeds > 0;
+                 nextNode = nextNode.Next ?? Board.Cups.First)
             {
                 cup.Seeds--;
                 ICup local1 = nextNode.Value;
@@ -35,11 +35,10 @@ namespace Mancala.Entities
 
         public void ReceivedMove(object sender, EventArgs e)
         {
-            ICup cup = (ICup)((Button)sender).Tag();
-            this.ApplyMove(cup);
+            var cup = (ICup) ((Button) sender).Tag;
+            ApplyMove(cup);
         }
 
         public IBoard Board { get; set; }
-
     }
 }

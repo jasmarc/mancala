@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Board.cs" />
+    <Compile Include="Entities\Cup.cs" />
     <Compile Include="Entities\IBoard.cs" />
     <Compile Include="Entities\ICup.cs" />
     <Compile Include="Entities\IReferree.cs" />
