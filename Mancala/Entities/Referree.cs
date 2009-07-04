@@ -39,17 +39,25 @@ namespace Mancala.Entities
             var cup = (ICup) ((Button) sender).Tag;
             if (MoveIsLegal(cup))
             {
-                for (LinkedListNode<ICup> nextNode = Board.Cups.Find(cup).Next ?? Board.Cups.First;
+                ICup nextCup = null;
+                for (LinkedListNode<ICup> nextNode = Board.Cups.Find(cup).Next
+                                                     ?? Board.Cups.First;
                      cup.Seeds > 0;
                      nextNode = nextNode.Next ?? Board.Cups.First)
                 {
-                    cup.Seeds--;
-                    ICup local1 = nextNode.Value;
-                    local1.Seeds++;
+                    nextCup = nextNode.Value;
+                    if (nextCup.Owner == Board.Turn || !nextCup.IsGoal)
+                    {
+                        cup.Seeds--;
+                        nextCup.Seeds++;
+                    }
                 }
-                Board.Turn = Board.Turn == Player.Player1
-                                 ? Player.Player2
-                                 : Player.Player1;
+                if (nextCup.Owner != Board.Turn || (!nextCup.IsGoal && nextCup.Seeds != 2))
+                {
+                    Board.Turn = Board.Turn == Player.Player1
+                                     ? Player.Player2
+                                     : Player.Player1;
+                }
             }
             else
             {
