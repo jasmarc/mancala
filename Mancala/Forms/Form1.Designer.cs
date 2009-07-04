@@ -134,9 +134,20 @@ namespace Mancala.Forms
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(referree.ReceivedMove);
             // 
+            // label1
+            // 
+            cup = cup.Next;
+            this.label1.DataBindings.Add("Text", cup.Value, "Seeds");
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "A";
+            // 
             // button7
             // 
-            cup = cup.Next.Next;
+            cup = cup.Next;
             this.button7.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button7.Tag = cup.Value;
             this.button7.Location = new System.Drawing.Point(49, 43);
@@ -216,17 +227,10 @@ namespace Mancala.Forms
             this.panel1.Size = new System.Drawing.Size(31, 56);
             this.panel1.TabIndex = 2;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "A";
-            // 
             // label2
             // 
+            cup = cup.Next;
+            this.label2.DataBindings.Add("Text", cup.Value, "Seeds");
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 21);
             this.label2.Name = "label2";
