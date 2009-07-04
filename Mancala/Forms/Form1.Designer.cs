@@ -61,7 +61,7 @@ namespace Mancala.Forms
             LinkedListNode<ICup> cup = referree.Board.Cups.First;
             this.button1.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button1.Tag = cup.Value;
-            this.button1.Location = new System.Drawing.Point(49, 12);
+            this.button1.Location = new System.Drawing.Point(49, 43);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 0;
@@ -74,7 +74,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button2.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button2.Tag = cup.Value;
-            this.button2.Location = new System.Drawing.Point(80, 12);
+            this.button2.Location = new System.Drawing.Point(80, 43);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 0;
@@ -87,7 +87,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button3.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button3.Tag = cup.Value;
-            this.button3.Location = new System.Drawing.Point(111, 12);
+            this.button3.Location = new System.Drawing.Point(111, 43);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(25, 25);
             this.button3.TabIndex = 0;
@@ -100,7 +100,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button4.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button4.Tag = cup.Value;
-            this.button4.Location = new System.Drawing.Point(142, 12);
+            this.button4.Location = new System.Drawing.Point(142, 43);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(25, 25);
             this.button4.TabIndex = 0;
@@ -113,7 +113,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button5.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button5.Tag = cup.Value;
-            this.button5.Location = new System.Drawing.Point(173, 12);
+            this.button5.Location = new System.Drawing.Point(173, 43);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(25, 25);
             this.button5.TabIndex = 0;
@@ -126,7 +126,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button6.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button6.Tag = cup.Value;
-            this.button6.Location = new System.Drawing.Point(204, 12);
+            this.button6.Location = new System.Drawing.Point(204, 43);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(25, 25);
             this.button6.TabIndex = 0;
@@ -150,7 +150,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button7.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button7.Tag = cup.Value;
-            this.button7.Location = new System.Drawing.Point(49, 43);
+            this.button7.Location = new System.Drawing.Point(204, 12);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(25, 25);
             this.button7.TabIndex = 0;
@@ -163,7 +163,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button8.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button8.Tag = cup.Value;
-            this.button8.Location = new System.Drawing.Point(80, 43);
+            this.button8.Location = new System.Drawing.Point(173, 12);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(25, 25);
             this.button8.TabIndex = 0;
@@ -175,7 +175,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button9.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button9.Tag = cup.Value;
-            this.button9.Location = new System.Drawing.Point(111, 43);
+            this.button9.Location = new System.Drawing.Point(142, 12);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(25, 25);
             this.button9.TabIndex = 0;
@@ -187,7 +187,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button10.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button10.Tag = cup.Value;
-            this.button10.Location = new System.Drawing.Point(142, 43);
+            this.button10.Location = new System.Drawing.Point(111, 12);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(25, 25);
             this.button10.TabIndex = 0;
@@ -199,7 +199,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button11.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button11.Tag = cup.Value;
-            this.button11.Location = new System.Drawing.Point(173, 43);
+            this.button11.Location = new System.Drawing.Point(80, 12);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(25, 25);
             this.button11.TabIndex = 0;
@@ -211,7 +211,7 @@ namespace Mancala.Forms
             cup = cup.Next;
             this.button12.DataBindings.Add("Text", cup.Value, "Seeds");
             this.button12.Tag = cup.Value;
-            this.button12.Location = new System.Drawing.Point(204, 43);
+            this.button12.Location = new System.Drawing.Point(49, 12);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(25, 25);
             this.button12.TabIndex = 0;
