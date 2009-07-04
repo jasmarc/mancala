@@ -1,10 +1,15 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Mancala.Entities
 {
     public class Board : IBoard
     {
+        public LinkedList<ICup> Cups { get; set; }
+        public IList<Player> Players { get; set; }
+        public Player Turn { get; set; }
+
         public Board()
         {
             Players = new List<Player>
@@ -34,12 +39,10 @@ namespace Mancala.Entities
 
         public bool GameIsOver()
         {
-            throw new NotImplementedException();
+            int numSeedsPlayer1 = Cups.Where(x => !x.IsGoal && x.Owner == Players[0]).Select(x => x.Seeds).Sum();
+            int numSeedsPlayer2 = Cups.Where(x => !x.IsGoal && x.Owner == Players[1]).Select(x => x.Seeds).Sum();
+            return ((numSeedsPlayer1 == 0) || (numSeedsPlayer2 == 0));
         }
-
-        public LinkedList<ICup> Cups { get; set; }
-        public IList<Player> Players { get; set; }
-        public Player Turn { get; set; }
 
         public override string ToString()
         {

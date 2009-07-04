@@ -7,11 +7,14 @@ namespace Mancala.Entities
         public event PropertyChangedEventHandler PropertyChanged;
         public bool IsGoal { get; set; }
         public Player Owner { get; set; }
-        private int seeds;
-        public int Seeds
+        public int Seeds { get; set; }
+
+        public override string ToString()
         {
-            get { return seeds; }
-            set { seeds = value; }
+            return string.Format("{0} {1}: {2}",
+                                 Owner,
+                                 IsGoal ? "end" : "reg",
+                                 Seeds);
         }
     }
 }
