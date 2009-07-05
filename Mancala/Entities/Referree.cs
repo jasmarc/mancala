@@ -10,23 +10,31 @@ namespace Mancala.Entities
         public Player? Winner()
         {
             Player? winner = null;
-            if (Board.Cups
-                    .Where(x => !(x is GoalCup)
-                                && x.Owner == Player.Player1)
-                    .Select(x => x.Seeds)
-                    .Sum() == 0)
+            if (SeedsLeft(Player.Player1) == 0
+                || SeedsLeft(Player.Player2) == 0)
             {
-                winner = Player.Player1;
-            }
-            else if (Board.Cups
-                         .Where(x => !(x is GoalCup)
-                                     && x.Owner == Player.Player2)
-                         .Select(x => x.Seeds)
-                         .Sum() == 0)
-            {
-                winner = Player.Player2;
+                winner = SeedsGained(Player.Player1) > SeedsGained(Player.Player2)
+                             ? Player.Player1
+                             : Player.Player2;
             }
             return winner;
+        }
+
+        private int SeedsLeft(Player player)
+        {
+            return Board.Cups
+                .Where(x => !(x is GoalCup)
+                            && x.Owner == player)
+                .Select(x => x.Seeds)
+                .Sum();
+        }
+
+        private int SeedsGained(Player player)
+        {
+            return Board.Cups
+                .Where(x => x is GoalCup
+                            && x.Owner == player)
+                .Select(x => x.Seeds).Single();
         }
 
         public bool MoveIsLegal(ICup cup)
@@ -52,10 +60,11 @@ namespace Mancala.Entities
                         nextCup.Seeds++;
                     }
                 }
-                Player? winner = Winner();
-                if(winner != null)
+                if(SeedsLeft(Board.Turn) == 0)
                 {
-                    MessageBox.Show(winner + " won!\r\n");
+                    ScoopUpAllRemaining();
+                    Console.WriteLine(Board);
+                    DeclareWinner();
                     Board.Reset();
                 }
                 else if (nextCup.Owner != Board.Turn || (!(nextCup is GoalCup) && nextCup.Seeds != 2))
@@ -69,6 +78,35 @@ namespace Mancala.Entities
             {
                 MessageBox.Show("Illegal Move");
             }
+        }
+
+        private void DeclareWinner()
+        {
+            Player winner = SeedsGained(Player.Player1) > SeedsGained(Player.Player2)
+                             ? Player.Player1
+                             : Player.Player2;
+            MessageBox.Show(winner + " won!");
+        }
+
+        private void ScoopUpAllRemaining()
+        {
+            ICup cup = Goal(Board.Turn);
+            Player otherPlayer = OtherPlayer(Board.Turn);
+            cup.Seeds += SeedsLeft(otherPlayer);
+            foreach (ICup c in Board.Cups.Where(x => !(x is GoalCup)))
+                c.Seeds = 0;
+        }
+
+        private ICup Goal(Player player)
+        {
+            return Board.Cups.Where(x => x is GoalCup && x.Owner == player).Single();
+        }
+
+        private Player OtherPlayer(Player player)
+        {
+            return player == Player.Player1
+                       ? Player.Player2
+                       : Player.Player1;
         }
 
         public IBoard Board { get; set; }

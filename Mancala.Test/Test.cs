@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using Mancala.Entities;
 using NUnit.Framework;
 using Rhino.Mocks;
@@ -45,6 +46,35 @@ namespace Mancala.Test
             Console.WriteLine(b);
             Assert.AreEqual(new[] {5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1},
                             b.Cups.Select(x => x.Seeds).ToArray());
+        }
+
+        [Test]
+        public void Test3()
+        {
+            IBoard b = BoardConfiguration.Create(new[] { 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
+            Assert.AreEqual(new[] { 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 },
+                            b.Cups.Select(x => x.Seeds).ToArray());
+            BoardConfiguration.Set(b, new[] { 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
+            Assert.AreEqual(new[] { 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 },
+                            b.Cups.Select(x => x.Seeds).ToArray());
+        }
+
+        [Test]
+        public void Test4()
+        {
+            IBoard b = BoardConfiguration.Create(new[] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 });
+            Console.WriteLine(b);
+            b.Turn = Player.Player1;
+            IReferree r = new Referree()
+                              {
+                                  Board = b
+                              };
+            Button button = new Button();
+            button.Tag = b.Cups.ToArray()[5];
+            r.ReceivedMove(button, null);
+            Console.WriteLine(b);
+            Assert.AreEqual(2, b.Cups.ToArray()[6].Seeds);
+            
         }
     }
 }
