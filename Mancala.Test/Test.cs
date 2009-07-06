@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using Mancala.Entities;
+using Mancala.Entities.Impl;
+using Mancala.Entities.Interface;
 using NUnit.Framework;
 using Rhino.Mocks;
+using Is=Rhino.Mocks.Constraints.Is;
 
 namespace Mancala.Test
 {
@@ -33,7 +34,6 @@ namespace Mancala.Test
                                      {
                                          Board = b
                                      };
-            Assert.Null(referree.Winner());
             ICup cup = b.Cups.ToArray()[10];
             for (LinkedListNode<ICup> nextNode = referree.Board.Cups.Find(cup).Next ?? referree.Board.Cups.First;
                  cup.Seeds > 0;
@@ -62,19 +62,37 @@ namespace Mancala.Test
         [Test]
         public void Test4()
         {
-            IBoard b = BoardConfiguration.Create(new[] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 });
+            IBoard b = BoardConfiguration.Create(new[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1});
             Console.WriteLine(b);
             b.Turn = Player.Player1;
-            IReferree r = new Referree()
+            IReferree r = new Referree
                               {
-                                  Board = b
+                                  Board = b,
+                                  View = MockRepository.GenerateMock<IView>()
                               };
-            Button button = new Button();
-            button.Tag = b.Cups.ToArray()[5];
-            r.ReceivedMove(button, null);
+            r.View.Expect(x => x.DisplayModalMessage("Player1 won!")).Constraints(Is.Equal("Player1 won!"));
+            r.ReceiveMove(b.Cups.ToArray()[5]);
+            Assert.AreEqual(new[] {0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
+                            b.Cups.Select(x => x.Seeds).ToArray());
+            r.View.VerifyAllExpectations();
+        }
+
+        [Test]
+        public void Test5()
+        {
+            IBoard b = BoardConfiguration.Create(new[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2});
             Console.WriteLine(b);
-            Assert.AreEqual(2, b.Cups.ToArray()[6].Seeds);
-            
+            b.Turn = Player.Player1;
+            IReferree r = new Referree
+                              {
+                                  Board = b,
+                                  View = MockRepository.GenerateMock<IView>()
+                              };
+            r.View.Expect(x => x.DisplayModalMessage("tie!")).Constraints(Is.Equal("tie!"));
+            r.ReceiveMove(b.Cups.ToArray()[5]);
+            Assert.AreEqual(new[] {0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2},
+                            b.Cups.Select(x => x.Seeds).ToArray());
+            r.View.VerifyAllExpectations();
         }
     }
 }

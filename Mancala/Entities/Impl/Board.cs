@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Mancala.Entities.Interface;
 
-namespace Mancala.Entities
+namespace Mancala.Entities.Impl
 {
-    public class Board : IBoard, INotifyPropertyChanged
+    public class Board : IBoard
     {
         public LinkedList<ICup> Cups { get; set; }
-        public IList<Player> Players { get; set; }
         private Player turn;
         public Player Turn
         {
@@ -39,6 +39,28 @@ namespace Mancala.Entities
                                                 new Cup(Player.Player2),
                                                 new GoalCup(Player.Player2)
                                             });
+        }
+
+        public int SeedsLeft(Player player)
+        {
+            return Cups
+                .Where(x => !(x is GoalCup)
+                            && x.Owner == player)
+                .Select(x => x.Seeds)
+                .Sum();
+        }
+
+        public int SeedsGained(Player player)
+        {
+            return Cups
+                .Where(x => x is GoalCup
+                            && x.Owner == player)
+                .Select(x => x.Seeds).Single();
+        }
+
+        public ICup Goal(Player player)
+        {
+            return Cups.Where(x => x is GoalCup && x.Owner == player).Single();
         }
 
         public override string ToString()

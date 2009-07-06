@@ -1,4 +1,4 @@
-namespace Mancala.Entities
+namespace Mancala.Entities.Impl
 {
     public enum Player
     {

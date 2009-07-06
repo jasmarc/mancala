@@ -1,6 +1,7 @@
 using System.ComponentModel;
+using Mancala.Entities.Interface;
 
-namespace Mancala.Entities
+namespace Mancala.Entities.Impl
 {
     public abstract class BaseCup : ICup
     {

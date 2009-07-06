@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using Mancala.Entities.Impl;
 
-namespace Mancala.Entities
+namespace Mancala.Entities.Interface
 {
     public interface ICup : INotifyPropertyChanged
     {

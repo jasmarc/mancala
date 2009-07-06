@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Mancala.Forms.MancalaParent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASSAgAAQACABABABKACAIAACAMw7IAAgAAAIAAAgECE=</HashCode>
+      <FileName>Forms\MancalaParent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Mancala.Entities.Impl.Board" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAABIIEAAACAAAAgAAhABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\Board.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Mancala.Entities.Impl.BoardConfiguration" Collapsed="true">
+    <Position X="10.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\BoardConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mancala.Entities.Impl.BaseCup" Collapsed="true">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAABIAEAAACAAAAggAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\Cup.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Mancala.Entities.Impl.GoalCup" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\Cup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mancala.Entities.Impl.Cup" Collapsed="true">
+    <Position X="2.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\Cup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mancala.Entities.Impl.Referree" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAABAAAABgABACAAAAEAAABBAAEAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Impl\Referree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Mancala.Entities.Interface.IBoard" Collapsed="true">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAACAAAAAAABAAAAAACAAAAgAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Interface\IBoard.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Mancala.Entities.Interface.ICup" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAABAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Interface\ICup.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Mancala.Entities.Interface.IReferree" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAACAAAAEAAABAAAEAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Interface\IReferree.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Mancala.Entities.Interface.IView" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAABAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Interface\IView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Mancala.Entities.Impl.Player" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Impl\Player.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

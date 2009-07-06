@@ -48,23 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Board.cs" />
-    <Compile Include="Entities\BoardConfiguration.cs" />
-    <Compile Include="Entities\Cup.cs" />
-    <Compile Include="Entities\IBoard.cs" />
-    <Compile Include="Entities\ICup.cs" />
-    <Compile Include="Entities\IReferree.cs" />
-    <Compile Include="Entities\IView.cs" />
-    <Compile Include="Entities\Player.cs" />
-    <Compile Include="Entities\Referree.cs" />
-    <Compile Include="Forms\Form1.cs">
+    <Compile Include="Entities\Impl\Board.cs" />
+    <Compile Include="Entities\Impl\BoardConfiguration.cs" />
+    <Compile Include="Entities\Impl\Cup.cs" />
+    <Compile Include="Entities\Interface\IBoard.cs" />
+    <Compile Include="Entities\Interface\ICup.cs" />
+    <Compile Include="Entities\Interface\IReferree.cs" />
+    <Compile Include="Entities\Interface\IView.cs" />
+    <Compile Include="Entities\Impl\Player.cs" />
+    <Compile Include="Entities\Impl\Referree.cs" />
+    <Compile Include="Forms\MancalaParent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\MancalaParent.Designer.cs">
+      <DependentUpon>MancalaParent.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\MancalaParent.resx">
+      <DependentUpon>MancalaParent.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -74,6 +78,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
