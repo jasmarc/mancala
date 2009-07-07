@@ -51,6 +51,9 @@
     <Compile Include="Entities\Impl\Board.cs" />
     <Compile Include="Entities\Impl\BoardConfiguration.cs" />
     <Compile Include="Entities\Impl\Cup.cs" />
+    <Compile Include="Entities\Impl\RulesEngine2.cs" />
+    <Compile Include="Entities\Interface\IRulesEngine.cs" />
+    <Compile Include="Entities\Impl\RulesEngine1.cs" />
     <Compile Include="Entities\Interface\IBoard.cs" />
     <Compile Include="Entities\Interface\ICup.cs" />
     <Compile Include="Entities\Interface\IReferree.cs" />

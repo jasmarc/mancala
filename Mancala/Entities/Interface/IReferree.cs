@@ -7,6 +7,7 @@ namespace Mancala.Entities.Interface
         IBoard Board { get; set; }
         IView View { get; set; }
         void ReceiveMove(ICup cup);
-        void AcknowledgeMessage(string message);
+        void SetRulesEngine(IRulesEngine engine);
+        void ResetGame();
     }
 }

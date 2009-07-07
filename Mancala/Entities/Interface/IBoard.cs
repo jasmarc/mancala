@@ -11,6 +11,7 @@ namespace Mancala.Entities.Interface
         int SeedsLeft(Player player);
         int SeedsGained(Player player);
         ICup Goal(Player player);
+        ICup CrossCup(ICup cup);
         void Reset();
     }
 }

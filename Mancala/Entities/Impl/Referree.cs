@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Mancala.Entities.Impl;
 using Mancala.Entities.Interface;
 
@@ -9,15 +8,17 @@ namespace Mancala.Entities.Impl
     {
         public IBoard Board { get; set; }
         public IView View { get; set; }
+        public IRulesEngine RulesEngine { get; set; }
 
         public void ReceiveMove(ICup cup)
         {
             if (moveIsLegal(cup))
             {
                 ICup landingCup = sowSeeds(cup);
+                applyPostMoveRules(landingCup);
                 if (Board.SeedsLeft(Board.Turn) == 0)
                 {
-                    scoopUpAllRemaining();
+                    handleRemainingSeeds();
                     declareWinner();
                 }
                 else
@@ -39,21 +40,40 @@ namespace Mancala.Entities.Impl
             }
         }
 
-        public void AcknowledgeMessage(string message)
+        public void SetRulesEngine(IRulesEngine engine)
+        {
+            RulesEngine = engine;
+            Board.Reset();
+        }
+
+        public void ResetGame()
         {
             Board.Reset();
         }
 
         private bool moveIsLegal(ICup cup)
         {
-            return ((cup.Seeds > 0) && (cup.Owner == Board.Turn));
+            return RulesEngine.MoveIsLegal(Board, cup);
         }
 
         private bool getToGoAgain(ICup landingCup)
         {
-            // go again if you end up in your own goal OR if you end up in one of your
-            // own cups such that you result in two seeds
-            return landingCup.Owner == Board.Turn && ((landingCup is GoalCup) || landingCup.Seeds == 2);
+            return RulesEngine.GetToGoAgain(Board, landingCup);
+        }
+
+        private bool shouldSowSeed(ICup cup)
+        {
+            return RulesEngine.ShouldSowSeed(Board, cup);
+        }
+
+        private void applyPostMoveRules(ICup cup)
+        {
+            RulesEngine.ApplyPostMoveRules(Board, cup);
+        }
+
+        private void handleRemainingSeeds()
+        {
+            RulesEngine.HandleRemainingSeeds(Board);
         }
 
         private ICup sowSeeds(ICup cup)
@@ -65,8 +85,7 @@ namespace Mancala.Entities.Impl
                  nextNode = nextNode.Next ?? Board.Cups.First)
             {
                 landingCup = nextNode.Value;
-                // skip your opponent's goal cup
-                if (landingCup.Owner == Board.Turn || !(landingCup is GoalCup))
+                if (shouldSowSeed(landingCup))
                 {
                     cup.Seeds--;
                     landingCup.Seeds++;
@@ -88,15 +107,6 @@ namespace Mancala.Entities.Impl
                                     : Player.Player2;
                 View.DisplayModalMessage(winner + " won!");
             }
-        }
-
-        private void scoopUpAllRemaining()
-        {
-            ICup cup = Board.Goal(Board.Turn);
-            Player otherPlayer = this.otherPlayer(Board.Turn);
-            cup.Seeds += Board.SeedsLeft(otherPlayer);
-            foreach (ICup c in Board.Cups.Where(x => !(x is GoalCup)))
-                c.Seeds = 0;
         }
 
         private Player otherPlayer(Player player)

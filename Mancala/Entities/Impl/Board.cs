@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -61,6 +62,21 @@ namespace Mancala.Entities.Impl
         public ICup Goal(Player player)
         {
             return Cups.Where(x => x is GoalCup && x.Owner == player).Single();
+        }
+
+        public ICup CrossCup(ICup cup)
+        {
+            if(!Cups.Contains(cup))
+                throw new ApplicationException("Cup not in collection.");
+
+            LinkedListNode<ICup> cupNode = Cups.First;
+            int i = 0;
+            while (cupNode.Value != cup)
+            {
+                cupNode = cupNode.Next;
+                i++;
+            }
+            return Cups.ToArray()[Math.Abs(i - 12)];
         }
 
         public override string ToString()

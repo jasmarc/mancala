@@ -18,6 +18,10 @@ namespace Mancala.Forms
                                View = this
                            };
 
+            addRulesEngine(new RulesEngine1());
+            addRulesEngine(new RulesEngine2());
+            setRuleEngine((ToolStripMenuItem) rulesToolStripMenuItem.DropDownItems[0]);
+
             SetPlayer(referree.Board.Turn);
 
             LinkedListNode<ICup> cup = referree.Board.Cups.First;
@@ -111,7 +115,7 @@ namespace Mancala.Forms
         public void DisplayModalMessage(string message)
         {
             MessageBox.Show(message);
-            referree.AcknowledgeMessage(message);
+            referree.ResetGame();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -123,6 +127,43 @@ namespace Mancala.Forms
         private void button_click(object sender, EventArgs e)
         {
             referree.ReceiveMove((ICup)((Button)sender).Tag);
+        }
+
+        private void addRulesEngine(IRulesEngine engine)
+        {
+            string title = string.Format("&{0} {1}", rulesToolStripMenuItem.DropDownItems.Count + 1, engine.Name);
+            ToolStripMenuItem toolStripMenuItem = new ToolStripMenuItem
+                                         {
+                                             Text = title,
+                                             Checked = false,
+                                             CheckState = CheckState.Unchecked,
+                                             Tag = engine
+                                         };
+            toolStripMenuItem.Click += RulesEngine_Click;
+            rulesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[]
+                                                              {
+                                                                  toolStripMenuItem
+                                                              });
+            //Name = "rulesEngine1ToolStripMenuItem";
+            //Size = new System.Drawing.Size(164, 22);
+            //Text = "&1 Rules Engine 1";
+        }
+
+        private void RulesEngine_Click(object sender, EventArgs e)
+        {
+            setRuleEngine((ToolStripMenuItem) sender);
+        }
+
+        private void setRuleEngine(ToolStripMenuItem menuItem)
+        {
+            referree.SetRulesEngine((IRulesEngine) menuItem.Tag);
+            foreach (ToolStripMenuItem item in rulesToolStripMenuItem.DropDownItems)
+            {
+                item.Checked = false;
+                item.CheckState = CheckState.Unchecked;
+            }
+            menuItem.Checked = true;
+            menuItem.CheckState = CheckState.Checked;
         }
     }
 }
