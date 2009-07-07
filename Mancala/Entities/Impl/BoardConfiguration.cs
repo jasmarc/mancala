@@ -6,7 +6,7 @@ namespace Mancala.Entities.Impl
 {
     public static class BoardConfiguration
     {
-        public static IBoard Create(int[] configuration)
+        public static IBoard Create(Player turn, int[] configuration)
         {
             IBoard retVal = new Board();
             for (int i = 0; i < configuration.Count(); i++)
@@ -16,12 +16,17 @@ namespace Mancala.Entities.Impl
             return retVal;
         }
 
-        public static void Set(IBoard b, int[] configuration)
+        public static void Set(IBoard b, Player turn, int[] configuration)
         {
             for (int i = 0; i < configuration.Count(); i++)
             {
                 b.Cups.ToArray()[i].Seeds = configuration[i];
             }
+        }
+
+        public static int[] GetConfiguration(IBoard b)
+        {
+            return b.Cups.Select(x => x.Seeds).ToArray();
         }
     }
 }

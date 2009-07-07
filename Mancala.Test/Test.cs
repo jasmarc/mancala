@@ -51,10 +51,10 @@ namespace Mancala.Test
         [Test]
         public void Test3()
         {
-            IBoard b = BoardConfiguration.Create(new[] { 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
+            IBoard b = BoardConfiguration.Create(Player.Player1, new[] { 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
             Assert.AreEqual(new[] { 5, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 },
                             b.Cups.Select(x => x.Seeds).ToArray());
-            BoardConfiguration.Set(b, new[] { 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
+            BoardConfiguration.Set(b, Player.Player2, new[] { 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 });
             Assert.AreEqual(new[] { 0, 4, 4, 4, 4, 4, 0, 4, 4, 4, 0, 5, 5, 1 },
                             b.Cups.Select(x => x.Seeds).ToArray());
         }
@@ -62,37 +62,37 @@ namespace Mancala.Test
         [Test]
         public void Test4()
         {
-            IBoard b = BoardConfiguration.Create(new[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1});
-            Console.WriteLine(b);
-            b.Turn = Player.Player1;
+            int[] configuration = new[] { 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1 };
+            IBoard b = BoardConfiguration.Create(Player.Player1, configuration);
+            IView v = MockRepository.GenerateMock<IView>();
             IReferree r = new Referree
-                              {
-                                  Board = b,
-                                  View = MockRepository.GenerateMock<IView>()
-                              };
+            {
+                Board = b,
+                View = v
+            };
             r.View.Expect(x => x.DisplayModalMessage("Player1 won!")).Constraints(Is.Equal("Player1 won!"));
             r.ReceiveMove(b.Cups.ToArray()[5]);
             Assert.AreEqual(new[] {0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 1},
-                            b.Cups.Select(x => x.Seeds).ToArray());
-            r.View.VerifyAllExpectations();
+                            BoardConfiguration.GetConfiguration(b));
+            v.VerifyAllExpectations();
         }
 
         [Test]
         public void Test5()
         {
-            IBoard b = BoardConfiguration.Create(new[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2});
-            Console.WriteLine(b);
-            b.Turn = Player.Player1;
+            int[] configuration = new[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 2};
+            IBoard b = BoardConfiguration.Create(Player.Player1, configuration);            
+            IView v = MockRepository.GenerateMock<IView>();
             IReferree r = new Referree
                               {
                                   Board = b,
-                                  View = MockRepository.GenerateMock<IView>()
+                                  View = v
                               };
             r.View.Expect(x => x.DisplayModalMessage("tie!")).Constraints(Is.Equal("tie!"));
             r.ReceiveMove(b.Cups.ToArray()[5]);
             Assert.AreEqual(new[] {0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 2},
-                            b.Cups.Select(x => x.Seeds).ToArray());
-            r.View.VerifyAllExpectations();
+                            BoardConfiguration.GetConfiguration(b));
+            v.VerifyAllExpectations();
         }
     }
 }
