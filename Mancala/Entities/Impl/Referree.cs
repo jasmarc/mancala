@@ -9,6 +9,7 @@ namespace Mancala.Entities.Impl
         public IBoard Board { get; set; }
         public IView View { get; set; }
         public IRulesEngine RulesEngine { get; set; }
+        private IHistoryManager<IBoard> history;
 
         public void ReceiveMove(ICup cup)
         {
@@ -33,6 +34,8 @@ namespace Mancala.Entities.Impl
                         View.SetPlayer(Board.Turn);
                     }
                 }
+                history.Add(BoardConfiguration.Copy(Board));
+                View.UndoEnabled = true;
             }
             else
             {
@@ -43,12 +46,38 @@ namespace Mancala.Entities.Impl
         public void SetRulesEngine(IRulesEngine engine)
         {
             RulesEngine = engine;
-            Board.Reset();
+            ResetGame();
         }
 
         public void ResetGame()
         {
             Board.Reset();
+            history = new HistoryManager<IBoard>(BoardConfiguration.Copy(Board));
+            View.UndoEnabled = false;
+            View.RedoEnabled = false;
+            View.SetPlayer(Board.Turn);
+        }
+
+        public void Undo()
+        {
+            if(history.CanUndo())
+            {
+                BoardConfiguration.Set(Board, history.Undo());
+                View.UndoEnabled = history.CanUndo();
+                View.RedoEnabled = history.CanRedo();
+                View.SetPlayer(Board.Turn);
+            }
+        }
+
+        public void Redo()
+        {
+            if(history.CanRedo())
+            {
+                BoardConfiguration.Set(Board, history.Redo());
+                View.UndoEnabled = history.CanUndo();
+                View.RedoEnabled = history.CanRedo();
+                View.SetPlayer(Board.Turn);
+            }
         }
 
         private bool moveIsLegal(ICup cup)

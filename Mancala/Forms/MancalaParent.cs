@@ -95,6 +95,18 @@ namespace Mancala.Forms
 
         public IReferree referree { get; set; }
 
+        public bool UndoEnabled
+        {
+            get { return undoToolStripMenuItem.Enabled; }
+            set { undoToolStripMenuItem.Enabled = value; }
+        }
+
+        public bool RedoEnabled
+        {
+            get { return redoToolStripMenuItem.Enabled; }
+            set { redoToolStripMenuItem.Enabled = value; }
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Close();
@@ -144,9 +156,6 @@ namespace Mancala.Forms
                                                               {
                                                                   toolStripMenuItem
                                                               });
-            //Name = "rulesEngine1ToolStripMenuItem";
-            //Size = new System.Drawing.Size(164, 22);
-            //Text = "&1 Rules Engine 1";
         }
 
         private void RulesEngine_Click(object sender, EventArgs e)
@@ -164,6 +173,16 @@ namespace Mancala.Forms
             }
             menuItem.Checked = true;
             menuItem.CheckState = CheckState.Checked;
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            referree.Undo();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            referree.Redo();
         }
     }
 }

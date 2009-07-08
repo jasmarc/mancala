@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HistoryManagerTest.cs" />
     <Compile Include="Test.cs" />
   </ItemGroup>
   <ItemGroup>

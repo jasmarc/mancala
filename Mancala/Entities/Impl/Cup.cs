@@ -29,6 +29,11 @@ namespace Mancala.Entities.Impl
 
         public abstract void Reset();
 
+        public ICup MemberwiseClone()
+        {
+            return (ICup) base.MemberwiseClone();
+        }
+
         public override string ToString()
         {
             return string.Format("{0} reg: {1}",

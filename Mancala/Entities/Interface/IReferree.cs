@@ -9,5 +9,7 @@ namespace Mancala.Entities.Interface
         void ReceiveMove(ICup cup);
         void SetRulesEngine(IRulesEngine engine);
         void ResetGame();
+        void Undo();
+        void Redo();
     }
 }

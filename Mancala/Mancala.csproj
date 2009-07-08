@@ -51,7 +51,9 @@
     <Compile Include="Entities\Impl\Board.cs" />
     <Compile Include="Entities\Impl\BoardConfiguration.cs" />
     <Compile Include="Entities\Impl\Cup.cs" />
+    <Compile Include="Entities\Impl\HistoryManager.cs" />
     <Compile Include="Entities\Impl\RulesEngine2.cs" />
+    <Compile Include="Entities\Interface\IHistoryManager.cs" />
     <Compile Include="Entities\Interface\IRulesEngine.cs" />
     <Compile Include="Entities\Impl\RulesEngine1.cs" />
     <Compile Include="Entities\Interface\IBoard.cs" />
@@ -80,6 +82,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
@@ -91,6 +94,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\revert.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

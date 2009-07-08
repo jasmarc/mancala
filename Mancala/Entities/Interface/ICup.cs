@@ -8,5 +8,6 @@ namespace Mancala.Entities.Interface
         Player Owner { get; set; }
         int Seeds { get; set; }
         void Reset();
+        ICup MemberwiseClone();
     }
 }
