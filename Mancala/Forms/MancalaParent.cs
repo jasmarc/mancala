@@ -165,7 +165,8 @@ namespace Mancala.Forms
 
         private void setRuleEngine(ToolStripMenuItem menuItem)
         {
-            referree.SetRulesEngine((IRulesEngine) menuItem.Tag);
+            IRulesEngine engine = (IRulesEngine) menuItem.Tag;
+            referree.SetRulesEngine(engine);
             foreach (ToolStripMenuItem item in rulesToolStripMenuItem.DropDownItems)
             {
                 item.Checked = false;
@@ -173,6 +174,7 @@ namespace Mancala.Forms
             }
             menuItem.Checked = true;
             menuItem.CheckState = CheckState.Checked;
+            toolStripStatusLabelRulesEngine.Text = engine.Name;
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,6 +185,11 @@ namespace Mancala.Forms
         private void redoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             referree.Redo();
+        }
+
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            referree.ResetGame();
         }
     }
 }

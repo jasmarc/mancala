@@ -50,14 +50,15 @@ namespace Mancala.Forms
             this.toolStripStatusLabelMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rulesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.undoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.redoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripStatusLabelRulesEngine = new System.Windows.Forms.ToolStripStatusLabel();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -263,6 +264,7 @@ namespace Mancala.Forms
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelPlayer,
+            this.toolStripStatusLabelRulesEngine,
             this.toolStripStatusLabelMessage});
             this.statusStrip1.Location = new System.Drawing.Point(0, 134);
             this.statusStrip1.Name = "statusStrip1";
@@ -272,16 +274,16 @@ namespace Mancala.Forms
             // 
             // toolStripStatusLabelPlayer
             // 
+            this.toolStripStatusLabelPlayer.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabelPlayer.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.toolStripStatusLabelPlayer.Name = "toolStripStatusLabelPlayer";
-            this.toolStripStatusLabelPlayer.Size = new System.Drawing.Size(52, 17);
+            this.toolStripStatusLabelPlayer.Size = new System.Drawing.Size(56, 17);
             this.toolStripStatusLabelPlayer.Text = "Player: []";
             // 
             // toolStripStatusLabelMessage
             // 
-            this.toolStripStatusLabelMessage.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left;
-            this.toolStripStatusLabelMessage.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
             this.toolStripStatusLabelMessage.Name = "toolStripStatusLabelMessage";
-            this.toolStripStatusLabelMessage.Size = new System.Drawing.Size(53, 17);
+            this.toolStripStatusLabelMessage.Size = new System.Drawing.Size(49, 17);
             this.toolStripStatusLabelMessage.Text = "Message";
             // 
             // menuStrip1
@@ -307,10 +309,22 @@ namespace Mancala.Forms
             this.toolStripMenuItemFile.Size = new System.Drawing.Size(35, 20);
             this.toolStripMenuItemFile.Text = "&File";
             // 
+            // newGameToolStripMenuItem
+            // 
+            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.newGameToolStripMenuItem.Text = "&New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(133, 6);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.exitToolStripMenuItem.Text = "&Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -351,16 +365,13 @@ namespace Mancala.Forms
             this.timer1.Interval = 3000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // newGameToolStripMenuItem
+            // toolStripStatusLabelRulesEngine
             // 
-            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newGameToolStripMenuItem.Text = "&New Game";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripStatusLabelRulesEngine.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
+            this.toolStripStatusLabelRulesEngine.BorderStyle = System.Windows.Forms.Border3DStyle.Etched;
+            this.toolStripStatusLabelRulesEngine.Name = "toolStripStatusLabelRulesEngine";
+            this.toolStripStatusLabelRulesEngine.Size = new System.Drawing.Size(72, 17);
+            this.toolStripStatusLabelRulesEngine.Text = "Rules Engine";
             // 
             // MancalaParent
             // 
@@ -415,6 +426,7 @@ namespace Mancala.Forms
         private ToolStripMenuItem redoToolStripMenuItem;
         private ToolStripMenuItem newGameToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
+        private ToolStripStatusLabel toolStripStatusLabelRulesEngine;
 
     }
 }
